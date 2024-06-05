@@ -16,16 +16,26 @@ public class Book {
     private String author;
     private int year;
     private String genre;
+    private int copies;
 
     public Book() {}
 
-    public Book(int id, String name, String author, int year, String genre, String ISBN) {
+    public Book(int id, String name, String author, int year, String genre, String ISBN, int copies) {
         this.id = id;
         this.name = name;
         this.author =author;
         this.year = year;
         this.genre = genre;
         this.ISBN = ISBN;
+        this.copies = copies;
+    }
+    public Book(String name, String author, int year, String genre, String ISBN, int copies) {
+        this.name = name;
+        this.author =author;
+        this.year = year;
+        this.genre = genre;
+        this.ISBN = ISBN;
+        this.copies = copies;
     }
 
     public String getName() {
@@ -43,6 +53,9 @@ public class Book {
     public int getYear() {
         return year;
     }
+    public int getCopies() {
+        return copies;
+    }
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -57,5 +70,8 @@ public class Book {
     }
     public void setISBN(int ISBN) {
         this.ISBN = this.ISBN;
+    }
+    public void setCopies(int copies) {
+        this.copies = copies;
     }
 }
