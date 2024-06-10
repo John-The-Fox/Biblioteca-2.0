@@ -68,8 +68,8 @@ public class Book {
     public void setYear(int year) {
         this.year = year;
     }
-    public void setISBN(int ISBN) {
-        this.ISBN = this.ISBN;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
     public void setCopies(int copies) {
         this.copies = copies;

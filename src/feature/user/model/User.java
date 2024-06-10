@@ -18,7 +18,7 @@ public class User {
     private String email;
     private String phone;
     private String address;
-    private boolean adm;
+    private boolean adm; // true se o usario tem privilegios de admin
 
     public User() {}
 
