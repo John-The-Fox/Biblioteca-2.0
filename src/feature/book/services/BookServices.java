@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookServices {
-    public List<Book> getBooksBySearch(String name, String author, int year, String genre, String ISBN, List<Book> fullLIst) {
+    public static List<Book> getBooksBySearch(String name, String author, int year, String genre, String ISBN, List<Book> fullList) {
         List<Book> resultBooks = new ArrayList<>();
-        for (Book book : fullLIst) {
+        for (Book book : fullList) {
             if ((name.isEmpty() || name.equalsIgnoreCase(book.getName())) &&
                     (author.isEmpty() || author.equalsIgnoreCase(book.getAuthor())) &&
                     (year == 0 || year == book.getYear()) &&

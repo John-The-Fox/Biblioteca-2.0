@@ -38,6 +38,9 @@ public class Book {
         this.copies = copies;
     }
 
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

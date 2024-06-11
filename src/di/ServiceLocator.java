@@ -3,24 +3,7 @@ package di;
 import feature.book.datasource.BookDAO;
 import feature.book.datasource.BookDatabase;
 import feature.book.datasource.BookSubscriber;
-import feature.book.presentation.BookController;
-import feature.book.presentation.BookControllerImpl;
-import feature.book.presentation.BookView;
-import feature.book.presentation.BookViewImpl;
-import feature.user.datasource.UserDAO;
-import feature.user.datasource.UserDatabase;
-import feature.user.datasource.UserSubscriber;
-import feature.user.presentation.UserController;
-import feature.user.presentation.UserControllerImpl;
-import feature.user.presentation.UserView;
-import feature.user.presentation.UserViewImpl;
-import feature.loan.datasource.LoanDAO;
-import feature.loan.datasource.LoanDatabase;
-import feature.loan.datasource.LoanSubscriber;
-import feature.loan.presentation.LoanController;
-import feature.loan.presentation.LoanControllerImpl;
-import feature.loan.presentation.LoanView;
-import feature.loan.presentation.LoanViewImpl;
+import feature.book.presentation.*;
 
 public class ServiceLocator {
 
@@ -59,5 +42,9 @@ public class ServiceLocator {
 
     public BookView getBookView() {
         return new BookViewImpl(getBookSubscriber(), getBookController());
+    }
+
+    public BookEdit getBookEdit() {
+        return new BookEditImpl(getBookController());
     }
 }
