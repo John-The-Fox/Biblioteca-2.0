@@ -98,5 +98,24 @@ public class UserDAO implements UserDatabase,UserSubscriber{
         return false;
     }
 
+    public User verifyCredentials(String username, String password) {
+        List<User> users = null;
+        try {
+            users = DatabaseManager.getDatabaseSessionFactory().fromTransaction(session -> {
+                return session.createQuery("from User where username = :username and password = :password")
+                        .setParameter("username", username)
+                        .setParameter("password", password)
+                        .list();
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (users != null && !users.isEmpty()) {
+            return users.get(0);
+        }
+        return null;
+    }
+
 
 }

@@ -1,9 +1,12 @@
 package feature.user.presentation;
 
+import di.ServiceLocator;
 import feature.user.model.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class UserEditImpl extends JFrame implements UserEdit {
     private final UserController userController;
@@ -24,6 +27,13 @@ public class UserEditImpl extends JFrame implements UserEdit {
         setTitle("Editar/Adicionar Usuário");
         setSize(400, 400);
         setLayout(new GridLayout(9, 2));
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                close();
+            }
+        });
 
         // Criação dos campos
         add(new JLabel("Nome:"));

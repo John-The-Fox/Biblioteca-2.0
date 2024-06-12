@@ -9,6 +9,8 @@ import di.ServiceLocator;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 public class UserViewImpl extends JFrame implements UserView, UserListener {
@@ -19,6 +21,12 @@ public class UserViewImpl extends JFrame implements UserView, UserListener {
         setTitle("Usuarios");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                close();
+            }
+        });
 
         this.userController = userController;
         userController.setView(this);

@@ -56,7 +56,7 @@ public class ServiceLocator {
 // Users ======================================================================
 private UserDAO userDAO;
 
-    private UserDAO getUserDao() {
+    private UserDAO getUserDAO() {
         if (userDAO == null) {
             userDAO = new UserDAO();
         }
@@ -65,11 +65,11 @@ private UserDAO userDAO;
     }
 
     public UserDatabase getUserDatabase() {
-        return getUserDao();
+        return getUserDAO();
     }
 
     public UserSubscriber getUserSubscriber() {
-        return getUserDao();
+        return getUserDAO();
     }
 
     public UserController getUserController() {
@@ -82,5 +82,16 @@ private UserDAO userDAO;
 
     public UserEdit getUserEdit() {
         return new UserEditImpl(getUserController());
+    }
+
+    public HomeView getHomeView() {
+        return new HomeViewImpl();
+    }
+
+    public LoginView getLoginView() {
+        LoginView loginView = new LoginViewImpl();
+        LoginController loginController = new LoginControllerImpl(getUserDAO(), loginView);
+        loginView.setLoginController(loginController);
+        return loginView;
     }
 }
