@@ -10,6 +10,11 @@ import feature.user.datasource.UserDAO;
 import feature.user.datasource.UserDatabase;
 import feature.user.datasource.UserSubscriber;
 import feature.user.presentation.*;
+//import for Loans
+import feature.loan.datasource.LoanDAO;
+import feature.loan.datasource.LoanDatabase;
+import feature.loan.datasource.LoanSubscriber;
+import feature.loan.presentation.*;
 
 public class ServiceLocator {
 
@@ -43,7 +48,7 @@ public class ServiceLocator {
     }
 
     public BookController getBookController() {
-        return new BookControllerImpl(getBookDatabase());
+        return new BookControllerImpl(getBookDatabase(),getUserController());
     }
 
     public BookView getBookView() {
@@ -93,5 +98,35 @@ private UserDAO userDAO;
         LoginController loginController = new LoginControllerImpl(getUserDAO(), loginView);
         loginView.setLoginController(loginController);
         return loginView;
+    }
+
+    // Loans ======================================================================
+    private LoanDAO loanDAO;
+
+    private LoanDAO getLoanDao() {
+        if (loanDAO == null) {
+            loanDAO = new LoanDAO();
+        }
+        return loanDAO;
+    }
+
+    public LoanDatabase getLoanDatabase() {
+        return getLoanDao();
+    }
+
+    public LoanSubscriber getLoanSubscriber() {
+        return getLoanDao();
+    }
+
+    public LoanController getLoanController() {
+        return new LoanControllerImpl(getLoanDatabase(),getBookDatabase());
+    }
+
+    public LoanView getLoanView() {
+        return new LoanViewImpl(getLoanSubscriber(), getLoanController());
+    }
+
+    public LoanAdd getLoanAdd() {
+        return new LoanAddImpl(getLoanController());
     }
 }

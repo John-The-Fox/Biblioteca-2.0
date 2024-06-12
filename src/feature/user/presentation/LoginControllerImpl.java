@@ -21,6 +21,7 @@ public class LoginControllerImpl implements LoginController {
         User user = userDAO.verifyCredentials(username, password);
         if (user != null) {
             Globals.setAdmin(user.isAdm());
+            Globals.setCurrentUserId(user.getId());
             if (user.isAdm()) {
                 // Redirecionar para a tela "Home"
                 JOptionPane.showMessageDialog(null, "Bem-vindo, Administrador!");

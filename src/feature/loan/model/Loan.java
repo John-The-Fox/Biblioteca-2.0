@@ -26,6 +26,19 @@ public class Loan {
 
     public Loan(){}
 
+    public Loan(User user, Book book, Date loanDate, Date dueDate, boolean returned, String name, String ra, String email, String phone, String address){
+        this.user = user;
+        this.book = book;
+        this.loanDate = loanDate;
+        this.dueDate = dueDate;
+        this.returned = returned;
+        this.name = name;
+        this.ra = ra;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
+
     public Loan(int id, User user, Book book, Date loanDate, Date dueDate, boolean returned, String name, String ra, String email, String phone, String address){
         this.id = id;
         this.user = user;
@@ -43,9 +56,6 @@ public class Loan {
     public int getid () {
         return id;
     }
-    /*public void setid (int id) {
-        this.id = id;
-    }*/
     public User getUser() {
         return user;
     }

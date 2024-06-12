@@ -166,11 +166,6 @@ public class UserViewImpl extends JFrame implements UserView, UserListener {
     }
 
     @Override
-    public void minimize() {
-        setVisible(false);
-    }
-
-    @Override
     public void showErrorMessage(String msg) {
         JOptionPane.showMessageDialog(this, msg, "Erro", JOptionPane.ERROR_MESSAGE);
     }

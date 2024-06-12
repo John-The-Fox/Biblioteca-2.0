@@ -103,7 +103,12 @@ public class BookEditImpl extends JFrame implements BookEdit {
         // Obter dados dos campos de texto
         String name = nameField.getText();
         String author = authorField.getText();
-        int year = Integer.parseInt(yearField.getText());
+        int year = 0;
+        try {
+            year = yearField.getText().isEmpty() ? 0 : Integer.parseInt(yearField.getText());
+        } catch (NumberFormatException ex){
+            showErrorMessage("Valor Ano Invalido.");
+        }
         String genre = genreField.getText();
         String ISBN = isbnField.getText();
         int copies = Integer.parseInt(copiesField.getText());

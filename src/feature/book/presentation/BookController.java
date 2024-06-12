@@ -19,4 +19,10 @@ public interface BookController {
 
     Book getBookByISBN(String ISBN);
 
+    void rentBook(String ISBN);
+
+    void returnBook(String ISBN);
+
+    void returnBook();
+
 }

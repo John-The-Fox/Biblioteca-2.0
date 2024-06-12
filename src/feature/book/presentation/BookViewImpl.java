@@ -5,6 +5,7 @@ import feature.book.model.Book;
 import feature.book.datasource.BookListener;
 import feature.book.services.BookServices;
 import di.ServiceLocator;
+import global.Globals;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -78,13 +79,44 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
         });
         buttonPanel.add(searchButton);
 
+        JButton rentButton = new JButton("Alugar");
+        rentButton.addActionListener(e -> {
+            int selectedRow = bookTable.getSelectedRow();
+            if (selectedRow != -1) {
+                String selectedISBN = (String) tableModel.getValueAt(selectedRow, 4);
+                Book book = bookController.getBookByISBN(selectedISBN);
+                if (book.getCopies() > 0) {
+                    bookController.rentBook(selectedISBN);
+                    updateData();
+                } else{
+                    showErrorMessage("Sem copias disponiveis.");
+                }
+            } else {
+                showErrorMessage("Selecione um livro para alugar.");
+            }
+        });
+        buttonPanel.add(rentButton);
+
+        JButton returnButton = new JButton("Devolver");
+        returnButton.addActionListener(e -> {
+            int selectedRow = bookTable.getSelectedRow();
+            if (selectedRow != -1) {
+                String selectedISBN = (String) tableModel.getValueAt(selectedRow, 4);
+                bookController.returnBook(selectedISBN);
+                updateData();
+            } else {
+                bookController.returnBook();;
+            }
+        });
+        buttonPanel.add(returnButton);
+
         JButton addButton = new JButton("Adicionar");
         addButton.addActionListener(e -> {
             SwingUtilities.invokeLater(() -> {
                 ServiceLocator.getInstance().getBookEdit().open();
             });
         });
-        buttonPanel.add(addButton);// somente se usuario for adm
+        if (Globals.isAdmin() == true){buttonPanel.add(addButton);}// somente se usuario for adm
 
         JButton editButton = new JButton("Editar");
         editButton.addActionListener(e -> {
@@ -99,7 +131,7 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
                 showErrorMessage("Selecione um livro para editar.");
             }
         });
-        buttonPanel.add(editButton);// somente se usuario for adm
+        if (Globals.isAdmin() == true){buttonPanel.add(editButton);}// somente se usuario for adm
 
         JButton deleteButton = new JButton("Excluir");
         deleteButton.addActionListener(e -> {
@@ -112,7 +144,8 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
                 showErrorMessage("Selecione um livro para excluir.");
             }
         });
-        buttonPanel.add(deleteButton);// somente se usuario for adm
+        if (Globals.isAdmin() == true){buttonPanel.add(deleteButton);}// somente se usuario for adm
+
         JButton refreshButton = new JButton("Recarregar");
         refreshButton.addActionListener(e -> {
             updateData();
@@ -143,11 +176,6 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
     @Override
     public void close() {
         dispose();
-    }
-
-    @Override
-    public void minimize() {
-        setVisible(false);
     }
 
     @Override

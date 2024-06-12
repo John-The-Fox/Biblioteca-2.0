@@ -1,18 +1,25 @@
 package feature.book.presentation;
 
+import di.ServiceLocator;
 import feature.book.datasource.BookDatabase;
 import feature.book.model.Book;
+import feature.user.model.User;
+import feature.user.presentation.UserController;
+import global.Globals;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookControllerImpl implements BookController {
     private BookView bookView;
     private BookDatabase bookDatabase;
+    private UserController userController;
     private List<Book> books = new ArrayList<>();
 
-    public BookControllerImpl(BookDatabase bookDatabase) {
+    public BookControllerImpl(BookDatabase bookDatabase, UserController userController) {
         this.bookDatabase = bookDatabase;
+        this.userController = userController;
     }
 
     @Override
@@ -64,5 +71,30 @@ public class BookControllerImpl implements BookController {
             }
         }
         return null;// esse caso nunca deve ocorrer
+    }
+
+    @Override
+    public void rentBook(String ISBN){
+        Book book = getBookByISBN(ISBN);
+        int userId = Globals.getCurrentUserId();
+        User user = userController.getUserById(userId);
+        SwingUtilities.invokeLater(() -> {
+            ServiceLocator.getInstance().getLoanAdd().open(book,user);
+        });
+    }
+
+    @Override
+    public void returnBook(String ISBN){
+        Book book = getBookByISBN(ISBN);
+        SwingUtilities.invokeLater(() -> {
+            ServiceLocator.getInstance().getLoanView().open(book);
+        });
+    }
+
+    @Override
+    public void returnBook(){
+        SwingUtilities.invokeLater(() -> {
+            ServiceLocator.getInstance().getLoanView().open();
+        });
     }
 }
