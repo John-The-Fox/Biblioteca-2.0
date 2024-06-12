@@ -28,6 +28,7 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
 
         // Carregar livros do banco de dados
         loadBooks();
+        bookSubscriber.subscribe(this);
     }
 
     private void initializeUI() {
@@ -82,8 +83,6 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
             SwingUtilities.invokeLater(() -> {
                 ServiceLocator.getInstance().getBookEdit().open();
             });
-            bookController.refreshBooks();
-            updateData();
         });
         buttonPanel.add(addButton);// somente se usuario for adm
 
@@ -99,7 +98,6 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
             } else {
                 showErrorMessage("Selecione um livro para editar.");
             }
-
         });
         buttonPanel.add(editButton);// somente se usuario for adm
 
@@ -117,7 +115,6 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
         buttonPanel.add(deleteButton);// somente se usuario for adm
         JButton refreshButton = new JButton("Recarregar");
         refreshButton.addActionListener(e -> {
-            bookController.refreshBooks();
             updateData();
         });
         buttonPanel.add(refreshButton);
@@ -160,6 +157,7 @@ public class BookViewImpl extends JFrame implements BookView, BookListener {
 
     @Override
     public void updateData() {
+        bookController.refreshBooks();
         loadBooks();
     }
 }

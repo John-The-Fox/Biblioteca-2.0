@@ -43,7 +43,7 @@ public class BookDAO implements BookDatabase, BookSubscriber {
     }
 
     @Override
-    public void updateTask(int id, String name, String author, int year, String genre, String ISBN, int copies) {
+    public void updateBook(int id, String name, String author, int year, String genre, String ISBN, int copies) {
         try {
             DatabaseManager.getDatabaseSessionFactory().inTransaction(session -> {
                 var book = session.get(Book.class, id);

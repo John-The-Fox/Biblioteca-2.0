@@ -64,13 +64,17 @@ public class BookEditImpl extends JFrame implements BookEdit {
     @Override
     public void open() {
         setVisible(true);
+        setTitle("Adicionar Livro");
+        clearFields();
     }
 
     @Override
     public void open(Book book) {
-        setVisible(true);
         setBookDetails(book);
         bookId = book.getId();
+        setTitle("Editar Livro ID: " + book.getId());
+        setVisible(true);
+
     }
 
     @Override
@@ -87,7 +91,7 @@ public class BookEditImpl extends JFrame implements BookEdit {
         genreField.setText(book.getGenre());
         isbnField.setText(book.getISBN());
         copiesField.setText(String.valueOf(book.getCopies()));
-        add(new JLabel("ID:" + book.getId()));
+        //add(new JLabel("ID:" + book.getId()));
     }
 
     @Override
@@ -106,11 +110,19 @@ public class BookEditImpl extends JFrame implements BookEdit {
         if (bookId == -1) {
             bookController.addBook(name, author, year, genre, ISBN, copies);
         } else{
-            bookController.editBook(bookId, name, author,  year, genre, ISBN);
+            bookController.editBook(bookId, name, author, year, genre, ISBN, copies);
         }
         bookController.refreshBooks();
         // Notificar o usuário que o livro foi salvo com sucesso
         JOptionPane.showMessageDialog(this, "Livro salvo com sucesso!");
         close();
+    }
+    private void clearFields() {
+        nameField.setText("");
+        authorField.setText("");
+        yearField.setText("");
+        genreField.setText("");
+        isbnField.setText("");
+        copiesField.setText("");
     }
 }

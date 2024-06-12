@@ -8,6 +8,7 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             ServiceLocator.getInstance().getBookView().open();
             //ServiceLocator.getInstance().getBookEdit().open();
+            //ServiceLocator.getInstance().getUserView().open();
         });
     }
 }

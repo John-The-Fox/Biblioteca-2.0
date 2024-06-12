@@ -33,6 +33,16 @@ public class User {
         this.address = address;
         this.adm = adm;
     }
+    public User(String name,String username , String password, String DOB, String email, String phone , String address, boolean adm) {
+        this.name = name;
+        this.password = password;
+        this.DOB = DOB;
+        this.email = email;
+        this.username = username;
+        this.phone = phone;
+        this.address = address;
+        this.adm = adm;
+    }
 
     public String getName() {
         return name;

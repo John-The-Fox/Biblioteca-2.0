@@ -1,9 +1,15 @@
 package di;
 
+//import for books
 import feature.book.datasource.BookDAO;
 import feature.book.datasource.BookDatabase;
 import feature.book.datasource.BookSubscriber;
 import feature.book.presentation.*;
+//import for Users
+import feature.user.datasource.UserDAO;
+import feature.user.datasource.UserDatabase;
+import feature.user.datasource.UserSubscriber;
+import feature.user.presentation.*;
 
 public class ServiceLocator {
 
@@ -17,7 +23,7 @@ public class ServiceLocator {
 
         return instance;
     }
-
+// Books ======================================================================
     private BookDAO BookDAO;
 
     private BookDAO getBookDao() {
@@ -46,5 +52,35 @@ public class ServiceLocator {
 
     public BookEdit getBookEdit() {
         return new BookEditImpl(getBookController());
+    }
+// Users ======================================================================
+private UserDAO userDAO;
+
+    private UserDAO getUserDao() {
+        if (userDAO == null) {
+            userDAO = new UserDAO();
+        }
+
+        return userDAO;
+    }
+
+    public UserDatabase getUserDatabase() {
+        return getUserDao();
+    }
+
+    public UserSubscriber getUserSubscriber() {
+        return getUserDao();
+    }
+
+    public UserController getUserController() {
+        return new UserControllerImpl(getUserDatabase());
+    }
+
+    public UserView getUserView() {
+        return new UserViewImpl(getUserSubscriber(), getUserController());
+    }
+
+    public UserEdit getUserEdit() {
+        return new UserEditImpl(getUserController());
     }
 }

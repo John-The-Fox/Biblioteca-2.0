@@ -18,24 +18,34 @@ public class Loan {
     private Date loanDate;
     private Date dueDate;
     private boolean returned;
+    private String name;
+    private String ra;
+    private String email;
+    private String phone;
+    private String address;
 
     public Loan(){}
 
-    public Loan(int id, User user, Book book, Date loanDate, Date dueDate, boolean returned){
+    public Loan(int id, User user, Book book, Date loanDate, Date dueDate, boolean returned, String name, String ra, String email, String phone, String address){
         this.id = id;
         this.user = user;
         this.book = book;
         this.loanDate = loanDate;
         this.dueDate = dueDate;
         this.returned = returned;
+        this.name = name;
+        this.ra = ra;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
     //gets e sets
     public int getid () {
         return id;
     }
-    public void setid (int id) {
+    /*public void setid (int id) {
         this.id = id;
-    }
+    }*/
     public User getUser() {
         return user;
     }
@@ -65,6 +75,36 @@ public class Loan {
     }
     public void setReturned(boolean returned) {
         this.returned = returned;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getRa() {
+        return ra;
+    }
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
 

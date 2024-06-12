@@ -1,10 +1,8 @@
 package feature.book.presentation;
 
-import di.ServiceLocator;
 import feature.book.datasource.BookDatabase;
 import feature.book.model.Book;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +17,12 @@ public class BookControllerImpl implements BookController {
 
     @Override
     public void setView(BookView view){
-
+        this.bookView = view;
     }
 
     @Override
     public void addBook(String name, String author, int year, String genre, String ISBN, int copies){
         bookDatabase.insertBook(name, author, year, genre, ISBN, copies);
-    }
-
-    @Override
-    public void updateBook(int id, String name, String author, int year, String genre, String ISBN, int copies){
-
     }
 
     @Override
@@ -53,8 +46,8 @@ public class BookControllerImpl implements BookController {
     }
 
     @Override
-    public void editBook(int id, String name, String author, int year, String genre, String ISBN){
-
+    public void editBook(int id, String name, String author, int year, String genre, String ISBN, int copies){
+        bookDatabase.updateBook( id, name, author, year, genre, ISBN, copies);
     }
 
     @Override
