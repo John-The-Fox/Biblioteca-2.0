@@ -37,6 +37,7 @@ public class LoanControllerImpl implements LoanController {
     @Override
     public void returnLoan(int loanId) {
         Loan loan = getLoanById(loanId);
+        if (loan.getDueDate().after(new Date())) {loanView.showErrorMessage("devolução atrasada, uma multa será cobrada");}
         Book book = loan.getBook();
         bookDatabase.updateBook(book.getId(), book.getName(), book.getAuthor(), book.getYear(), book.getGenre(), book.getISBN(), book.getCopies()+1);
         loanDatabase.returnBook(loanId);
