@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-06-15T19:07:04.001Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="u1dfTRzg6zmsmO2vMjuQ" version="24.5.4" type="github">
+<mxfile host="app.diagrams.net" modified="2024-06-15T19:16:31.081Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="ZeOz3WcgtJOIHGe4wjZs" version="24.5.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="4036" dy="2731" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4557" dy="3012" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -1013,25 +1013,31 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="_h8sS-52qm7GfvDOoYgC-435" value="UserViewImpl" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-880" y="-1890" width="199" height="150" as="geometry">
+        <mxCell id="_h8sS-52qm7GfvDOoYgC-435" value="LoanViewImpl" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-910" y="-1920" width="250" height="194" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="_h8sS-52qm7GfvDOoYgC-436" value="- tableModel: DefaultTableModel" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="_h8sS-52qm7GfvDOoYgC-435" vertex="1">
-          <mxGeometry y="30" width="199" height="26" as="geometry" />
+          <mxGeometry y="30" width="250" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="_h8sS-52qm7GfvDOoYgC-437" value="- userController: UserController" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="_h8sS-52qm7GfvDOoYgC-435" vertex="1">
-          <mxGeometry y="56" width="199" height="26" as="geometry" />
+        <mxCell id="_h8sS-52qm7GfvDOoYgC-437" value="- loanController: LoanController" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="_h8sS-52qm7GfvDOoYgC-435" vertex="1">
+          <mxGeometry y="56" width="250" height="26" as="geometry" />
         </mxCell>
         <mxCell id="_h8sS-52qm7GfvDOoYgC-438" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="_h8sS-52qm7GfvDOoYgC-435" vertex="1">
-          <mxGeometry y="82" width="199" height="8" as="geometry" />
+          <mxGeometry y="82" width="250" height="8" as="geometry" />
         </mxCell>
         <mxCell id="_h8sS-52qm7GfvDOoYgC-439" value="- initializeUI(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="_h8sS-52qm7GfvDOoYgC-435" vertex="1">
-          <mxGeometry y="90" width="199" height="26" as="geometry" />
+          <mxGeometry y="90" width="250" height="26" as="geometry" />
         </mxCell>
         <mxCell id="_h8sS-52qm7GfvDOoYgC-440" value="+ updateData(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="_h8sS-52qm7GfvDOoYgC-435" vertex="1">
-          <mxGeometry y="116" width="199" height="26" as="geometry" />
+          <mxGeometry y="116" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="pGUsEUTJCHOHWd_lEdZ--15" value="- loadLoans(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="_h8sS-52qm7GfvDOoYgC-435">
+          <mxGeometry y="142" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="pGUsEUTJCHOHWd_lEdZ--14" value="- updateLoanTable(loans: List&lt;Loan&gt;): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="_h8sS-52qm7GfvDOoYgC-435">
+          <mxGeometry y="168" width="250" height="26" as="geometry" />
         </mxCell>
         <mxCell id="_h8sS-52qm7GfvDOoYgC-441" value="LoanAddImpl" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-560" y="-1640" width="199" height="168" as="geometry">
